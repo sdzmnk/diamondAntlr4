@@ -1,6 +1,6 @@
 grammar g;
 
-program
+prog
     : (COMMENT | declarationList)* 'begin' (COMMENT | statementList)* 'finish'
     ;
 
@@ -32,7 +32,21 @@ statement
     | switchStatement
     | elifStatement
     | untilStatement
+    |declarationList1
     ;
+
+declarationList1
+    : identList1 '=' expressionList1
+    ;
+
+identList1
+    : IDENT (',' IDENT)*
+    ;
+
+expressionList1
+    : expression (',' expression)*
+    ;
+
 
 assign
     : IDENT '=' expression
@@ -43,10 +57,7 @@ inp
     ;
 
 out
-    : 'puts' '"' IDENT '"'
-    | DIGIT
-    | SPEC_SIGN
-    ;
+    : 'puts' (CONST | '"' IDENT '"') ;
 
 ifStatement
     : 'if' boolExpr thenBlock (elseBlock)? 'end'
@@ -65,7 +76,7 @@ whileStatement
     ;
 
 forStatement
-    : 'for' IDENT 'in' range 'do' doBlock 'end'
+    : 'for' IDENT 'in' SPEC_SIGN range SPEC_SIGN 'do' doBlock 'end'
     ;
 
 range
@@ -73,11 +84,11 @@ range
     ;
 
 startValue
-    : INT_NUMB | IDENT
+    : CONST | IDENT
     ;
 
 endValue
-    : INT_NUMB | IDENT
+    : CONST | IDENT
     ;
 
 untilStatement
@@ -89,7 +100,7 @@ doBlock
     ;
 
 switchStatement
-    : 'switch' IDENT 'do' caseBlock+ (defaultBlock)? 'end'
+    : 'switch' IDENT 'do' caseBlock+ 'end'
     ;
 
 caseBlock
@@ -97,12 +108,9 @@ caseBlock
     ;
 
 value
-    : LETTER | DIGIT
+    : LETTER | CONST
     ;
 
-defaultBlock
-    : 'default' ':' thenBlock
-    ;
 
 elifStatement
     : 'if' boolExpr thenBlock elifBlock+ (elseBlock)? 'end'
@@ -127,8 +135,10 @@ arithmExpression
     ;
 
 term
-    : factor (('*' | '/') factor)*
+    : factor (('*' | '/' | '**') factor)*
     ;
+
+
 
 factor
     : IDENT
@@ -165,7 +175,7 @@ SIGN
     ;
 
 SPEC_SIGN
-    : '~' | '!' | '@' | '#' | '$' | '%'
+    : '~' | '!' | '@' | '#' | '$' | '%' | '[' | ']'
     ;
 
 IDENT
