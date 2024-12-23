@@ -7,15 +7,15 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface gListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link gParser#program}.
+	 * Enter a parse tree produced by {@link gParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void enterProgram(gParser.ProgramContext ctx);
+	void enterProg(gParser.ProgContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link gParser#program}.
+	 * Exit a parse tree produced by {@link gParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void exitProgram(gParser.ProgramContext ctx);
+	void exitProg(gParser.ProgContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link gParser#declarationList}.
 	 * @param ctx the parse tree
@@ -66,6 +66,36 @@ public interface gListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStatement(gParser.StatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#declarationList1}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclarationList1(gParser.DeclarationList1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#declarationList1}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclarationList1(gParser.DeclarationList1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#identList1}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdentList1(gParser.IdentList1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#identList1}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdentList1(gParser.IdentList1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#expressionList1}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressionList1(gParser.ExpressionList1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#expressionList1}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressionList1(gParser.ExpressionList1Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link gParser#assign}.
 	 * @param ctx the parse tree
@@ -226,16 +256,6 @@ public interface gListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValue(gParser.ValueContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link gParser#defaultBlock}.
-	 * @param ctx the parse tree
-	 */
-	void enterDefaultBlock(gParser.DefaultBlockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link gParser#defaultBlock}.
-	 * @param ctx the parse tree
-	 */
-	void exitDefaultBlock(gParser.DefaultBlockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link gParser#elifStatement}.
 	 * @param ctx the parse tree

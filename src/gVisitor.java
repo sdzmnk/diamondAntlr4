@@ -10,11 +10,11 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link gParser#program}.
+	 * Visit a parse tree produced by {@link gParser#prog}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProgram(gParser.ProgramContext ctx);
+	T visitProg(gParser.ProgContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link gParser#declarationList}.
 	 * @param ctx the parse tree
@@ -45,6 +45,24 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitStatement(gParser.StatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#declarationList1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclarationList1(gParser.DeclarationList1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#identList1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentList1(gParser.IdentList1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#expressionList1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionList1(gParser.ExpressionList1Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link gParser#assign}.
 	 * @param ctx the parse tree
@@ -141,12 +159,6 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitValue(gParser.ValueContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link gParser#defaultBlock}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDefaultBlock(gParser.DefaultBlockContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link gParser#elifStatement}.
 	 * @param ctx the parse tree

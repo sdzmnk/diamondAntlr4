@@ -60,7 +60,7 @@ out
     : 'puts' (CONST | '"' IDENT '"') ;
 
 ifStatement
-    : 'if' boolExpr thenBlock (elseBlock)? 'end'
+    : 'if' boolExpr thenBlock (elifStatement)* (elseBlock)? 'end'
     ;
 
 thenBlock
